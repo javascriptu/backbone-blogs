@@ -14,6 +14,7 @@ define([
     validate : function() {
       var title = this.attributes.title,
         content = this.attributes.content;
+
       if (title.length < 1 && content.length < 1) {
         return "title-content";
       } else if (title.length < 1) {

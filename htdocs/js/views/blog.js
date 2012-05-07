@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'text!templates/blog.html'
-], function ($, _, Backbone, blogTemplate) {
+], function ($, _, Backbone,  blogTemplate) {
   var BlogView = Backbone.View.extend({
 
     tagName : "div",
@@ -12,23 +12,43 @@ define([
 
     template : _.template(blogTemplate),
 
+    single : false, //Is it a single blog view
+
     events : {
-      "click span.blog-remove" : "clear"
+      "click span.blog-remove" : "clear",
+      "click #blog-list .blog-title" : "singleView"
     },
 
-    initialize : function () {
+    initialize : function (options) {
+      if (options.type === 'single') this.single = true;
+
       _.bindAll(this, 'render', 'remove');
       this.model.bind('change', this.render);
       this.model.bind('destroy', this.remove);
     },
 
+    singleView : function(e) {
+      Backbone.history.navigate("!/blog/" + this.model.attributes.id,{trigger: true});
+    },
+
     render : function () {
+      //If Single View Remove Grid Class
+      if (this.single) this.el.className = 'single';
+
       $(this.el).html(this.template(this.model.toJSON()));
       return this;
     },
 
-    clear : function () {
+    clear : function (e) {
+      console.log(e);
+      e.preventDefault();
       this.model.clear();
+    },
+
+    close : function() {
+      console.log("CLOSING");
+      this.remove();
+      this.model.unbind("change", this.render);
     }
 
   });

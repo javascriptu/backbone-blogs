@@ -1,10 +1,10 @@
 define([
-  'underscore', 
-  'backbone', 
+  'underscore',
+  'backbone',
   'localstorage',
   'models/blog'
   ], function(_, Backbone, Store, Blog){
-	  
+
 	var BlogsCollection = Backbone.Collection.extend({
 
     model: Blog,
