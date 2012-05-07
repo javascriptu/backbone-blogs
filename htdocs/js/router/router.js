@@ -1,3 +1,6 @@
+/*jshint latedef:false */
+/*global define:true */
+
 define([
   'jquery',
   'underscore',
@@ -14,9 +17,9 @@ define([
     },
 
     main : function () {
-      require(['views/app', 'views/create'],
-        function (AppView, CreateView) {
-          var app = new AppView();
+      require(['views/blogs-widget', 'views/create'],
+        function (BlogsWidget, CreateView) {
+          var blogsWidget = new BlogsWidget();
           var create = new CreateView();
           layout.showMainView(create);
         });
@@ -33,10 +36,8 @@ define([
     defaultRoute : function (path) {
       console.log('bad path: ' + path);
       //Redirect To Main View
-      document.location.hash('!/');
+      document.location.hash = '!/';
     }
-
   });
-
   return Router;
 });

@@ -10,9 +10,12 @@ define([
   function initialize() {
     //Force Hash
     if (document.location.hash === "") document.location.hash = "#!/";
-    var router = new Router();
-    Backbone.history.start();
 
+    //Instantiate Router
+    var router = new Router();
+
+    //Start Monitoring Hashchange events and Dispatching Routes.
+    Backbone.history.start();
   }
 
   return {

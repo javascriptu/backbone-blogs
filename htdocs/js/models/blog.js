@@ -1,3 +1,6 @@
+/*jshint latedef:false */
+/*global define:true */
+
 define([
   'underscore',
   'backbone'

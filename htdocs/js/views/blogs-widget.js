@@ -7,7 +7,7 @@ define([
   "moment"
 ], function ($, _, Backbone, Blogs, BlogView ,moment) {
 
-  var AppView = Backbone.View.extend({
+  var BlogModule = Backbone.View.extend({
 
     el : $("#appContainer"),
 
@@ -43,5 +43,5 @@ define([
     }
 
   });
-  return AppView;
+  return BlogModule;
 });

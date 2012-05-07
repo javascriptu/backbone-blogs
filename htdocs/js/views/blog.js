@@ -40,13 +40,11 @@ define([
     },
 
     clear : function (e) {
-      console.log(e);
       e.preventDefault();
       this.model.clear();
     },
 
     close : function() {
-      console.log("CLOSING");
       this.remove();
       this.model.unbind("change", this.render);
     }

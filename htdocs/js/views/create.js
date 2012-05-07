@@ -52,15 +52,11 @@ define([
       return this;
     },
 
+    //Still playing with this...
     close : function() {
-      console.log("CLOSING1");
-
       this.remove();
       this.unbind();
-
-
-
-    }
+   }
 
   });
   return CreateView;
