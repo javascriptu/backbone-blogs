@@ -98,6 +98,10 @@ input, textarea {
 .blog-title {
   cursor:pointer;
   font-size:24px;
+  line-height:35px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .single .blog-title {

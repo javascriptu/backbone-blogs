@@ -3,13 +3,14 @@ define([
   'underscore',
   'backbone',
   'collections/blogs',
-  'views/blog',
-  "moment"
-], function ($, _, Backbone, Blogs, BlogView ,moment) {
+  'views/blog'
+], function ($, _, Backbone, Blogs, BlogView) {
 
   var BlogModule = Backbone.View.extend({
 
-    el : $("#appContainer"),
+    tagName : 'div',
+
+    className : 'blog-widget',
 
     initialize : function (options) {
       _.bindAll(this, 'add', 'restore', 'render');
@@ -17,6 +18,7 @@ define([
       //Bind Collection Events
       Blogs.bind('add', this.add);
       Blogs.bind('reset', this.restore);
+      Blogs.bind('refresh', this.restore);
 
       //Get Persistent Blogs from Store
       Blogs.fetch();
@@ -25,14 +27,19 @@ define([
     add : function (blog) {
       var view = new BlogView({model : blog}),
         viewEl = view.render().el;
-      this.$("#blog-list").prepend(viewEl);
+
+      this.$el.prepend(viewEl);
       $(viewEl).fadeIn();
     },
 
     //Restore All The Blogs From Persistent Store
     restore    : function () {
-      this.$("#blog-list").empty();
       Blogs.each(this.add);
+    },
+
+    close : function() {
+      this.remove();
+      $(this.el).unbind();
     }
 
   });

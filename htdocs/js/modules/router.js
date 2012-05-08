@@ -21,7 +21,8 @@ define([
         function (BlogsWidget, CreateView) {
           var blogsWidget = new BlogsWidget();
           var create = new CreateView();
-          layout.showMainView(create);
+          layout.showView('#mainInner',create);
+          layout.showView('#blogs',blogsWidget, 'widget');
         });
     },
 
@@ -30,7 +31,7 @@ define([
         function (BlogView, BlogCollection) {
           var options = {type : "single", model : BlogCollection.get(id)},
             blog = new BlogView(options);
-          layout.showMainView(blog);
+          layout.showView('#mainInner',blog);
         });
     },
 

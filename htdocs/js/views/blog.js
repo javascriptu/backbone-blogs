@@ -2,8 +2,9 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'text!templates/blog.html'
-], function ($, _, Backbone,  blogTemplate) {
+  'text!templates/blog.html',
+  'moment'
+], function ($, _, Backbone,  blogTemplate,moment) {
   var BlogView = Backbone.View.extend({
 
     tagName : "div",
@@ -16,7 +17,7 @@ define([
 
     events : {
       "click span.blog-remove" : "clear",
-      "click #blog-list .blog-title" : "singleView"
+      "click .item .blog-title" : "singleView"
     },
 
     initialize : function (options) {
@@ -53,7 +54,7 @@ define([
 
     close : function() {
       this.remove();
-      this.model.unbind("change", this.render);
+      $(this.el).unbind();
     }
 
   });
