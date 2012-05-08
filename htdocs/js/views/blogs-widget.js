@@ -24,16 +24,9 @@ define([
 
     add : function (blog) {
       var view = new BlogView({model : blog}),
-        viewEl = $(view.render().el),
-        timestampDiv =  viewEl.find(".blog-timestamp"),
-        timestamp = timestampDiv.text();
-
-      timestampDiv.text(moment(timestamp).fromNow());
-
-      //@todo Fix the Timestamp On Create Of New Blog
-
+        viewEl = view.render().el;
       this.$("#blog-list").prepend(viewEl);
-      viewEl.fadeIn();
+      $(viewEl).fadeIn();
     },
 
     //Restore All The Blogs From Persistent Store

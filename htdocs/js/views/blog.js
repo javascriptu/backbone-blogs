@@ -32,10 +32,17 @@ define([
     },
 
     render : function () {
-      //If Single View Remove Grid Class
-      if (this.single) this.el.className = 'single';
-
-      $(this.el).html(this.template(this.model.toJSON()));
+      var model = this.model.toJSON();
+      if (this.single)  {
+        //If Single View Remove Grid Class
+        this.el.className = 'single';
+        //Long Format Date
+        model.created = moment(model.created).format('dddd, MMMM Do YYYY, h:mm:ss a');
+      } else {
+        //From Now Date
+        model.created = moment(model.created).fromNow();
+      }
+      $(this.el).html(this.template(model));
       return this;
     },
 
