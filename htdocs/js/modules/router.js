@@ -28,7 +28,8 @@ define([
     single : function (id) {
       require(['views/blog', 'collections/blogs'],
         function (BlogView, BlogCollection) {
-          var blog = new BlogView({type : "single", model : BlogCollection.get(id)});
+          var options = {type : "single", model : BlogCollection.get(id)},
+            blog = new BlogView(options);
           layout.showMainView(blog);
         });
     },

@@ -4,7 +4,7 @@
 define([
   "underscore",
   "backbone",
-  "router/router"
+  "modules/router"
 ], function (_, Backbone, Router) {
 
   function initialize() {
