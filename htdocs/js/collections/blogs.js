@@ -20,5 +20,7 @@ define([
     }
 
   });
-  return new BlogsCollection;
+  var blogs = new BlogsCollection();
+  blogs.fetch();
+  return blogs;
 });
