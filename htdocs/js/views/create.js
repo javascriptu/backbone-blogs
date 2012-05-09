@@ -38,7 +38,6 @@ define([
     },
 
     handleError : function() {
-      // @todo Error Creating Blog
       console.log("error");
     },
 

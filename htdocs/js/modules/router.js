@@ -29,9 +29,18 @@ define([
     single : function (id) {
       require(['views/blog', 'collections/blogs'],
         function (BlogView, BlogCollection) {
-          var options = {type : "single", model : BlogCollection.get(id)},
-            blog = new BlogView(options);
-          layout.showView('#mainInner',blog);
+          var model = BlogCollection.get(id);
+          if (model) {
+            layout.showView('#mainInner',new BlogView({type : "single", model : model }));
+          } else {
+            //Hacky Workaround to Fix LocalStorage Sync Issue With ID - Will Fix ASAP
+            _.each(BlogCollection.models, function(model) {
+              if (model.id === id) {
+                layout.showView('#mainInner',new BlogView({type : "single", model : model }));
+                return;
+              }
+            });
+          }
         });
     },
 

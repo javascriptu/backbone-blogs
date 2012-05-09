@@ -12,13 +12,13 @@ define([
 
     className : 'blog-widget',
 
-    initialize : function (options) {
+    initialize : function () {
       _.bindAll(this, 'add', 'restore', 'render');
 
       //Bind Collection Events
-      Blogs.bind('add', this.add);
-      Blogs.bind('reset', this.restore);
-      Blogs.bind('refresh', this.restore);
+      Blogs.on('add', this.add);
+      Blogs.on('reset', this.restore);
+      Blogs.on('refresh', this.restore);
 
       //Get Persistent Blogs from Store
       Blogs.fetch();

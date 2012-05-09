@@ -21,13 +21,14 @@ define([
     },
 
     initialize : function (options) {
-      if (options.type === 'single') this.single = true;
       _.bindAll(this, 'render', 'remove');
-      this.model.bind('change', this.render);
-      this.model.bind('destroy', this.remove);
+
+      if (options.type === 'single') this.single = true;
+      this.model.on('change', this.render);
+      this.model.on('destroy', this.remove);
     },
 
-    singleView : function(e) {
+    singleView : function() {
       Backbone.history.navigate("!/blog/" + this.model.attributes.id,{trigger: true});
     },
 
