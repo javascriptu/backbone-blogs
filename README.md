@@ -1,8 +1,8 @@
 JavascriptU Backbone Blogs
 ===========================
 
-# The Course Material For Backbone - Require
-
+# The RequireJS / Backbone Demo App For JavascriptU Workshop 3
+## For Presentation Purposes Only. Feel Free To Extend and Make it your own
 
 MIT License
 -----------
