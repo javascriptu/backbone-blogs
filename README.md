@@ -1,8 +1,9 @@
 JavascriptU Backbone Blogs
 ===========================
 
-# The RequireJS / Backbone Demo App For JavascriptU Workshop 3
-## For Presentation Purposes Only. Feel Free To Extend and Make it your own
+## The RequireJS / Backbone Demo App For JavascriptU Workshop 3
+
+For Presentation Purposes Only. Feel Free To Extend and Make it your own
 
 MIT License
 -----------
